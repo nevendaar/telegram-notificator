@@ -1,0 +1,13 @@
+body {
+    padding: 0 10px;
+}
+
+label, input[type='text'], textarea {
+    width: 100%;
+}
+
+textarea {
+    resize: vertical;
+    min-height: 50px;
+}
+

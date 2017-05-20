@@ -16,6 +16,10 @@ use Rack::Auth::Basic, 'Restricted Area' do |login, password|
 end
 
 get '/' do
-  'Form will be here'
+  erb :telegram_form
+end
+
+post '/channel' do
+  'Success!'
 end
 
