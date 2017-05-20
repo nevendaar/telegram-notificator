@@ -2,7 +2,7 @@ body {
     padding: 0 10px;
 }
 
-label, input[type='text'], textarea {
+label, input[type='text'], input[type='url'], textarea {
     width: 100%;
 }
 

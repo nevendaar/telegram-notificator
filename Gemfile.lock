@@ -1,6 +1,19 @@
 GEM
   remote: https://rubygems.org/
   specs:
+    axiom-types (0.1.1)
+      descendants_tracker (~> 0.0.4)
+      ice_nine (~> 0.11.0)
+      thread_safe (~> 0.3, >= 0.3.1)
+    coercible (1.0.0)
+      descendants_tracker (~> 0.0.1)
+    descendants_tracker (0.0.4)
+      thread_safe (~> 0.3, >= 0.3.1)
+    equalizer (0.0.11)
+    faraday (0.12.1)
+      multipart-post (>= 1.2, < 3)
+    ice_nine (0.11.2)
+    multipart-post (2.0.0)
     mustermann (1.0.0)
     puma (3.8.2)
     rack (2.0.3)
@@ -11,7 +24,16 @@ GEM
       rack (~> 2.0)
       rack-protection (= 2.0.0)
       tilt (~> 2.0)
+    telegram-bot-ruby (0.7.2)
+      faraday
+      virtus
+    thread_safe (0.3.6)
     tilt (2.0.7)
+    virtus (1.0.5)
+      axiom-types (~> 0.1)
+      coercible (~> 1.0)
+      descendants_tracker (~> 0.0, >= 0.0.3)
+      equalizer (~> 0.0, >= 0.0.9)
 
 PLATFORMS
   ruby
@@ -19,6 +41,10 @@ PLATFORMS
 DEPENDENCIES
   puma
   sinatra
+  telegram-bot-ruby
+
+RUBY VERSION
+   ruby 2.3.4p301
 
 BUNDLED WITH
    1.15.0

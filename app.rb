@@ -1,6 +1,11 @@
 # frozen_string_literal: true
 
 require 'sinatra'
+require 'telegram/bot'
+
+BOT_TOKEN   = ENV.fetch('TELEGRAM_BOT_API_TOKEN').freeze
+BOT_CHAT_ID = ENV.fetch('TELEGRAM_BOT_API_CHAT_ID', '@test_temp_chnl_42').freeze
+BOT_MSG_FORMAT = 'HTML'
 
 def secure_digest(str)
   Digest::SHA512.digest str
@@ -20,6 +25,30 @@ get '/' do
 end
 
 post '/channel' do
-  'Success!'
+  msg_title = params['title'].to_s.strip
+  msg_body  = params['text'].to_s.strip
+  msg_link  = params['ref_url'].to_s.strip
+
+  if msg_body.empty? || msg_link.empty?
+    halt 400, 'Текст и ссылка обязательны к заполнению.'
+  end
+
+  chat_msg = String.new
+  if msg_title.size > 1
+    chat_msg << "<b>#{Rack::Utils.escape_html msg_title}</b>\n\n"
+  end
+  chat_msg << msg_body << "\n\n#{msg_link}"
+
+  status = false
+  Telegram::Bot::Client.run(BOT_TOKEN) do |bot|
+    result = bot.api.send_message(
+        chat_id:    BOT_CHAT_ID,
+        text:       chat_msg,
+        parse_mode: BOT_MSG_FORMAT
+    )
+    status = result['ok']
+  end
+  
+  status ? 'Success' : 'Failed, sorry'
 end
 
