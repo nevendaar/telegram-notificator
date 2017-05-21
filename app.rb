@@ -34,7 +34,7 @@ post '/channel' do
   end
 
   chat_msg = String.new
-  if msg_title.size > 1
+  unless msg_title.empty?
     chat_msg << "<b>#{Rack::Utils.escape_html msg_title}</b>\n\n"
   end
   chat_msg << msg_body << "\n\n#{msg_link}"
