@@ -20,6 +20,8 @@ use Rack::Auth::Basic, 'Restricted Area' do |login, password|
     Rack::Utils.secure_compare(secure_digest(password), BASIC_AUTH_PASSWORD)
 end
 
+set :protection, except: :frame_options
+
 get '/' do
   erb :telegram_form
 end
@@ -51,4 +53,3 @@ post '/channel' do
   
   status ? 'Success' : 'Failed, sorry'
 end
-

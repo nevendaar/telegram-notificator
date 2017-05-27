@@ -7,4 +7,3 @@ gem 'foreman'
 gem 'puma'
 gem 'sinatra'
 gem 'telegram-bot-ruby'
-
