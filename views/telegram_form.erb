@@ -1,14 +1,14 @@
 <form action="/channel" method="post">
     <p>
         <label for="notice_title_fld">Заголовок (для важных новостей):</label>
-        <input type="text" name="title" id="notice_title_fld" maxlength="128">
+        <input type="text" name="title" id="notice_title_fld" maxlength="128" value="<%= @msg_title %>">
     </p>
     <p>
-        <textarea name="text" maxlength="1024" rows="7" required></textarea>
+        <textarea name="text" maxlength="1024" rows="7" required><%= @msg_body %></textarea>
     </p>
     <p>
         <label for="notice_ref_url_fld">Ссылка на материал:</label>
-        <input type="url" name="ref_url" id="notice_ref_url_fld" maxlength="256" required>
+        <input type="url" name="ref_url" id="notice_ref_url_fld" maxlength="256" value="<%= @msg_link %>" required>
     </p>
     <p>
         <input type="submit" value="Готово">

@@ -23,6 +23,9 @@ end
 set :protection, except: :frame_options
 
 get '/' do
+  @msg_title = params['title'].to_s.strip
+  @msg_body  = params['text'].to_s.strip
+  @msg_link  = params['ref_url'].to_s.strip
   erb :telegram_form
 end
 
